@@ -1,3 +1,4 @@
 export type TileProps = {
-  name: string;
+  value: string;
+  onTileClick: Function;
 };
