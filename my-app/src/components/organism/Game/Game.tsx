@@ -5,7 +5,7 @@ import TileRow from '../../molecules/TileRow/TileRow';
 import Modal from '../Modal/Modal';
 import InfoBar from '../../molecules/InfoBar/InfoBar';
 
-import * as Constants from './Game.constants';
+import * as Constants from '../../../constants/Game.constants';
 import Button from '../../atoms/Button/Button';
 import Icon from '../../atoms/Icon/Icon';
 import { GameResultType, ScoreType } from './Game.types';
@@ -17,13 +17,11 @@ const Game = () => {
   const [currentPlayer, setCurrentPlayer] = useState<string>(
     Constants.INITIAL_CURRENT_PLAYER_STATE
   );
-
   const [gameResult, setGameResult] = useState<GameResultType>(
     Constants.INITIAL_GAME_RESULT_STATE
   );
-
   const [score, setScore] = useState<ScoreType>(Constants.INITIAL_SCORE_STATE);
-
+  const [showModal, setShowModal] = useState<Boolean>(false);
   const initialRender = useRef(true);
 
   useEffect(() => {
@@ -35,6 +33,7 @@ const Game = () => {
     const isWinner = checkWin();
     if (isWinner) {
       incrementScore(currentPlayer);
+      setShowModal(true);
       setGameResult({ winner: currentPlayer, ended: true });
       return;
     }
@@ -42,6 +41,7 @@ const Game = () => {
     const isDraw = checkDraw();
     if (isDraw) {
       incrementScore(Constants.DRAW);
+      setShowModal(true);
       setGameResult({ winner: Constants.DRAW, ended: true });
       return;
     }
@@ -99,10 +99,15 @@ const Game = () => {
     return false;
   };
 
+  const changeShowModal = (): void => {
+    setShowModal((prevState) => !prevState);
+  };
+
   const resetGame = (): void => {
     setBoard(Constants.INITIAL_BOARD_STATE);
     setCurrentPlayer(Constants.INITIAL_CURRENT_PLAYER_STATE);
     setGameResult(Constants.INITIAL_GAME_RESULT_STATE);
+    setShowModal(false);
   };
 
   return (
@@ -180,9 +185,13 @@ const Game = () => {
         </div>
         <Score score={score} />
       </div>
-      {gameResult.ended && (
+      {showModal && (
         <Modal>
-          <InfoBar winner={gameResult.winner} startNewRound={resetGame} />
+          <InfoBar
+            winner={gameResult.winner}
+            startNewRound={resetGame}
+            changeShowModal={changeShowModal}
+          />
         </Modal>
       )}
     </div>

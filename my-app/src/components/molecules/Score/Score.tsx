@@ -1,6 +1,6 @@
 import ScoreTile from '../../atoms/ScoreTile/ScoreTile';
 import styles from './Score.module.scss';
-import * as Constants from '../../organism/Game/Game.constants';
+import * as Constants from '../../../constants/Game.constants';
 import { ScoreProps } from './Score.types';
 
 const Score = ({ score }: ScoreProps) => {

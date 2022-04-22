@@ -5,7 +5,7 @@ import {
   COLOR_AQUA,
   COLOR_GOLD,
   COLOR_GRAY,
-} from '../../organism/Game/Game.constants';
+} from '../../../constants/Game.constants';
 const ScoreTile = ({ children, tileColor }: ScoreTileProps) => {
   return (
     <div

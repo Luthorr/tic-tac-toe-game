@@ -5,9 +5,9 @@ import styles from './InfoBar.module.scss';
 import { InfoBarProps } from './InfoBar.types';
 import { motion } from 'framer-motion';
 
-import { COLOR_GOLD, DRAW } from '../../organism/Game/Game.constants';
+import { COLOR_GOLD, DRAW } from '../../../constants/Game.constants';
 
-const InfoBar = ({ winner, startNewRound }: InfoBarProps) => {
+const InfoBar = ({ winner, changeShowModal, startNewRound }: InfoBarProps) => {
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -24,7 +24,7 @@ const InfoBar = ({ winner, startNewRound }: InfoBarProps) => {
         )}
       </div>
       <div className={styles.row}>
-        <Button clickHandler={() => {}}>QUIT</Button>
+        <Button clickHandler={changeShowModal}>QUIT</Button>
         <Button btnColor={COLOR_GOLD} clickHandler={startNewRound}>
           NEXT ROUND
         </Button>

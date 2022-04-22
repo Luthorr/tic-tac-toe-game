@@ -2,7 +2,7 @@ import { HeaderProps } from './Headline.types';
 import styles from './Headline.module.scss';
 
 import classnames from 'classnames';
-import { CROSS, NOUGHT } from '../../organism/Game/Game.constants';
+import { CROSS, NOUGHT } from '../../../constants/Game.constants';
 const Headline = ({ children, winner }: HeaderProps) => {
   return (
     <h3

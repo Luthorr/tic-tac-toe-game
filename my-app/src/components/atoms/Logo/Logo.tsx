@@ -1,11 +1,11 @@
 import styles from './Logo.module.scss';
 import Icon from '../Icon/Icon';
-import * as Constants from '../../organism/Game/Game.constants';
+import { CROSS, NOUGHT } from '../../../constants/Game.constants';
 const Logo = () => {
   return (
     <div className={styles.iconsContainer}>
-      <Icon size={20} name={Constants.CROSS} />
-      <Icon size={20} name={Constants.NOUGHT} />
+      <Icon size={20} name={CROSS} />
+      <Icon size={20} name={NOUGHT} />
     </div>
   );
 };

@@ -3,7 +3,7 @@ import { IconTypes } from './Icon.types';
 
 import classnames from 'classnames';
 import { motion } from 'framer-motion';
-import * as Constants from '../../organism/Game/Game.constants';
+import { CROSS, NOUGHT } from '../../../constants/Game.constants';
 
 const Icon = ({ name, size = 70 }: IconTypes) => {
   if (name) {
@@ -16,8 +16,8 @@ const Icon = ({ name, size = 70 }: IconTypes) => {
         alt='icon'
         height={size}
         className={classnames(styles.icon, {
-          [styles.cross]: name === Constants.CROSS,
-          [styles.nought]: name === Constants.NOUGHT,
+          [styles.cross]: name === CROSS,
+          [styles.nought]: name === NOUGHT,
         })}
       />
     );

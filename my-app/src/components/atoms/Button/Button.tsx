@@ -5,7 +5,7 @@ import {
   COLOR_AQUA,
   COLOR_GOLD,
   COLOR_PRIMARY_LIGHTER,
-} from '../../organism/Game/Game.constants';
+} from '../../../constants/Game.constants';
 
 const Button = ({
   children,
