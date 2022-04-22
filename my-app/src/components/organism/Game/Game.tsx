@@ -8,7 +8,7 @@ import InfoBar from '../../molecules/InfoBar/InfoBar';
 import * as Constants from './Game.constants';
 import Button from '../../atoms/Button/Button';
 import Icon from '../../atoms/Icon/Icon';
-import { ScoreType } from './Game.types';
+import { GameResultType, ScoreType } from './Game.types';
 import Score from '../../molecules/Score/Score';
 import Logo from '../../atoms/Logo/Logo';
 
@@ -17,9 +17,12 @@ const Game = () => {
   const [currentPlayer, setCurrentPlayer] = useState<string>(
     Constants.INITIAL_CURRENT_PLAYER_STATE
   );
-  const [gameEnded, setGameEnded] = useState<Boolean>(
-    Constants.INITIAL_GAME_STATE
-  );
+
+  const [gameResult, setGameResult] = useState<GameResultType>({
+    winner: '',
+    ended: false,
+  });
+
   const [score, setScore] = useState<ScoreType>({
     cross: 0,
     draw: 0,
@@ -36,14 +39,13 @@ const Game = () => {
     const isWinner = checkWin();
     if (isWinner) {
       incrementScore(currentPlayer);
-      setGameEnded(true);
+      setGameResult({ winner: currentPlayer, ended: true });
       return;
     }
     const isDraw = checkDraw();
     if (isDraw) {
       incrementScore(Constants.DRAW);
-      console.log('REMIS');
-      setGameEnded(true);
+      setGameResult({ winner: Constants.DRAW, ended: true });
     }
     changeCurrentPlayer();
   }, [board]);
@@ -93,7 +95,10 @@ const Game = () => {
     initialRender.current = true;
     setBoard(Constants.INITIAL_BOARD_STATE);
     setCurrentPlayer(Constants.INITIAL_CURRENT_PLAYER_STATE);
-    setGameEnded(Constants.INITIAL_GAME_STATE);
+    setGameResult({
+      winner: '',
+      ended: false,
+    });
   };
 
   return (
@@ -120,60 +125,60 @@ const Game = () => {
           <TileRow>
             <Tile
               value={board[0]}
-              gameEnded={gameEnded}
+              gameEnded={gameResult.ended}
               onTileClick={() => handleTileClick(0)}
             />
             <Tile
               value={board[1]}
-              gameEnded={gameEnded}
+              gameEnded={gameResult.ended}
               onTileClick={() => handleTileClick(1)}
             />
             <Tile
               value={board[2]}
-              gameEnded={gameEnded}
+              gameEnded={gameResult.ended}
               onTileClick={() => handleTileClick(2)}
             />
           </TileRow>
           <TileRow>
             <Tile
               value={board[3]}
-              gameEnded={gameEnded}
+              gameEnded={gameResult.ended}
               onTileClick={() => handleTileClick(3)}
             />
             <Tile
               value={board[4]}
-              gameEnded={gameEnded}
+              gameEnded={gameResult.ended}
               onTileClick={() => handleTileClick(4)}
             />
             <Tile
               value={board[5]}
-              gameEnded={gameEnded}
+              gameEnded={gameResult.ended}
               onTileClick={() => handleTileClick(5)}
             />
           </TileRow>
           <TileRow>
             <Tile
               value={board[6]}
-              gameEnded={gameEnded}
+              gameEnded={gameResult.ended}
               onTileClick={() => handleTileClick(6)}
             />
             <Tile
               value={board[7]}
-              gameEnded={gameEnded}
+              gameEnded={gameResult.ended}
               onTileClick={() => handleTileClick(7)}
             />
             <Tile
               value={board[8]}
-              gameEnded={gameEnded}
+              gameEnded={gameResult.ended}
               onTileClick={() => handleTileClick(8)}
             />
           </TileRow>
         </div>
         <Score score={score} />
       </div>
-      {gameEnded && (
+      {gameResult.ended && (
         <Modal>
-          <InfoBar winner={currentPlayer} startNewRound={resetGame} />
+          <InfoBar winner={gameResult.winner} startNewRound={resetGame} />
         </Modal>
       )}
     </div>

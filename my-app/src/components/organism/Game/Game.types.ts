@@ -3,3 +3,8 @@ export type ScoreType = {
   draw: number;
   nought: number;
 };
+
+export type GameResultType = {
+  winner: string;
+  ended: Boolean;
+};
