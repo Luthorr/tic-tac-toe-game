@@ -35,15 +35,25 @@ const Game = () => {
     }
     const isWinner = checkWin();
     if (isWinner) {
-      setScore((prevState) => ({
-        ...prevState,
-        [currentPlayer]: prevState[currentPlayer as keyof ScoreType] + 1,
-      }));
+      incrementScore(currentPlayer);
       setGameEnded(true);
       return;
     }
+    const isDraw = checkDraw();
+    if (isDraw) {
+      incrementScore(Constants.DRAW);
+      console.log('REMIS');
+      setGameEnded(true);
+    }
     changeCurrentPlayer();
   }, [board]);
+
+  const incrementScore = (key: string) => {
+    setScore((prevState) => ({
+      ...prevState,
+      [key]: prevState[key as keyof ScoreType] + 1,
+    }));
+  };
 
   const checkWin = (): Boolean => {
     let matchingTiles: number = 0;
@@ -61,8 +71,15 @@ const Game = () => {
     return false;
   };
 
+  const checkDraw = (): Boolean => {
+    let clickedTilesCounter = 0;
+    board.forEach(({ length }) => {
+      length && clickedTilesCounter++;
+    });
+    return clickedTilesCounter === 9 ? true : false;
+  };
+
   const changeCurrentPlayer = (): void => {
-    console.log('change player');
     setCurrentPlayer((prevMove) =>
       prevMove === Constants.CROSS ? Constants.NOUGHT : Constants.CROSS
     );

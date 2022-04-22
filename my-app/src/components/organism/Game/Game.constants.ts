@@ -1,6 +1,7 @@
 export const CROSS = 'cross';
 export const NOUGHT = 'nought';
 export const REPEAT = 'repeat';
+export const DRAW = 'draw';
 
 export const WINNING_PATTERNS = [
   [0, 1, 2],
