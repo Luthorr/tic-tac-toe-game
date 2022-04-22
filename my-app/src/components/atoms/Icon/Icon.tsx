@@ -3,7 +3,7 @@ import { IconTypes } from './Icon.types';
 
 import classnames from 'classnames';
 import { motion } from 'framer-motion';
-import * as Constants from '../../../constants/Game';
+import * as Constants from '../../organism/Game/Game.constants';
 
 const Icon = ({ name }: IconTypes) => {
   if (name) {

@@ -15,10 +15,15 @@ $color__primary: #192a32;
 $color__primary--light:#1f3540;
 $color__primary--lighter:#243d49;
 $color__aqua: #32c0bb;
+$color__aqua--dark: #2ca8a4;
 $color__gray: #a9bec9;
-$color__gold: #f2b237;
+$color__gray--dark: #97aab4;
+$color__gold: #dda233;
+$color__gold--dark: #f2b237;
 
 //SIZES
 
 $size__tile: 120px;
 $size__tile--gap: 1.5rem;
+
+$boxShadow__primary: 0px 8px 0px 0px $color__primary--darker;

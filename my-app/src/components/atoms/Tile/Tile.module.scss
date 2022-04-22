@@ -8,7 +8,7 @@
   min-width: $size__tile;
   min-height: $size__tile;
   border-radius: 8px;
-  box-shadow: 0px 8px 0px 0px $color__primary--darker;
+  box-shadow: $boxShadow__primary;
   cursor: pointer;
   user-select: none;
   transition: 0.15s ease-in-out;

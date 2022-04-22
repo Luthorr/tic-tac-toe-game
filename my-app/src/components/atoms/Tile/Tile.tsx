@@ -2,9 +2,9 @@ import Icon from '../Icon/Icon';
 import styles from './Tile.module.scss';
 import { TileProps } from './TIle.types';
 
-const Tile = ({ value, onTileClick }: TileProps) => {
+const Tile = ({ value, gameEnded, onTileClick }: TileProps) => {
   const handleClick = (): void => {
-    !value && onTileClick();
+    !value && !gameEnded && onTileClick();
   };
 
   return (

@@ -1,0 +1,39 @@
+@import '../../../scss/variables';
+
+.button {
+  background-color: $color__gray;
+  border: 0;
+  outline: 0;
+  height: 2.5rem;
+  padding: 0 12px;
+  box-shadow: $boxShadow__primary;
+  border-radius: 8px;
+  font-size: $typography__font-size--s;
+  font-weight: $typography__font-weight--bold;
+  transition: 0.15s ease-in-out;
+  &:hover{
+    background-color: $color__gray--dark;
+  }
+}
+
+.aqua {
+  background-color: $color__aqua;
+  &:hover{
+    background-color: $color__aqua--dark;
+  }
+}
+
+.gold {
+  background-color: $color__gold;
+  &:hover{
+    background-color: $color__gold--dark;
+  }
+}
+
+.primaryLighter {
+  background-color: $color__primary--lighter;
+  color: $color__gray;
+  &:hover{
+    background-color: $color__primary;
+  }
+}

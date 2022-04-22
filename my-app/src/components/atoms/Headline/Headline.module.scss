@@ -1,0 +1,14 @@
+@import '../../../scss/variables';
+
+.headline {
+  font-size: $typography__font-size--l;
+  letter-spacing: 3px;
+}
+
+.cross {
+  color: $color__aqua;
+}
+
+.nought {
+  color: $color__gold;
+}
