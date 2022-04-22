@@ -8,5 +8,19 @@
   height: 100vh;
   background-color: $color__primary;
   color: $color__gray;
+}
+
+.infoRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 1rem 0
+}
+
+
+
+.boardContainer {
+  display: flex;
+  flex-direction: column;
   gap: $size__tile--gap;
 }

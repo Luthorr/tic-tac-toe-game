@@ -1,9 +1,27 @@
-.container {
+@import '../../../scss/variables';
+
+@mixin flex-center {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.container {
+  @include flex-center();
   position: fixed;
   height: 100vh;
   width: 100%;
   background-color: rgba(0, 0, 0, 0.25);
+}
+
+.bar {
+  @include flex-center();
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: $color__primary--lighter;
+  width: 100%;
+  min-height: 200px;
+  row-gap: 1rem;
 }

@@ -1,5 +1,6 @@
 export const CROSS = 'cross';
 export const NOUGHT = 'nought';
+export const REPEAT = 'repeat';
 
 export const WINNING_PATTERNS = [
   [0, 1, 2],
@@ -19,3 +20,4 @@ export const INITIAL_GAME_STATE = false;
 export const COLOR_AQUA = 'aqua';
 export const COLOR_PRIMARY_LIGHTER = 'primary-lighter';
 export const COLOR_GOLD = 'gold';
+export const COLOR_GRAY = 'gray';

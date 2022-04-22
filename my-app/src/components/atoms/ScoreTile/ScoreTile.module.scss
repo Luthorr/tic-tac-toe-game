@@ -1,0 +1,12 @@
+@import '../Button/Button.module.scss';
+
+.scoreTile {
+  @include buttonStyle();
+  padding: 0.7rem 0;
+  width: 30%;
+  cursor: not-allowed;
+}
+
+.gray {
+  @include buttonGray();
+}

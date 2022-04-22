@@ -1,19 +1,38 @@
 @import '../../../scss/variables';
 
-.button {
-  background-color: $color__gray;
+@mixin buttonStyle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.3rem;
+  color: $color__primary--darker;
   border: 0;
   outline: 0;
-  height: 2.5rem;
-  padding: 0 12px;
+  padding: 0.6rem 12px;
   box-shadow: $boxShadow__primary;
   border-radius: 8px;
   font-size: $typography__font-size--s;
   font-weight: $typography__font-weight--bold;
-  transition: 0.15s ease-in-out;
+  text-align: center;
+  letter-spacing: 0.8px;
+  transition: background-color 0.15s ease-in-out;
+  cursor: pointer;
+}
+
+@mixin buttonGray {
+  background-color: $color__gray;
   &:hover{
     background-color: $color__gray--dark;
   }
+}
+
+.button {
+  @include buttonStyle();
+  @include buttonGray();
+}
+
+.button.disabled{
+  cursor: not-allowed;
 }
 
 .aqua {
