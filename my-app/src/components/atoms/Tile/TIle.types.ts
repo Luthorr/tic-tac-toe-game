@@ -1,5 +1,6 @@
 export type TileProps = {
   value: string;
   gameEnded: Boolean;
-  onTileClick: Function;
+  onTileClick: () => void;
+  winningTile: Boolean;
 };

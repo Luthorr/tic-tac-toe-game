@@ -16,3 +16,17 @@
     background-color: $color__primary--lighter;
   }
 }
+
+.winningTileCross {
+  background-color: $color__aqua;
+  &:hover{
+    background-color: $color__aqua--dark;
+  }
+}
+
+.winningTileNought {
+  background-color: $color__gold;
+  &:hover{
+    background-color: $color__gold--dark;
+  }
+}

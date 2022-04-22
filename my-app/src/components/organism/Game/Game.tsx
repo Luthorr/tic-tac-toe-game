@@ -23,6 +23,7 @@ const Game = () => {
   const [score, setScore] = useState<ScoreType>(Constants.INITIAL_SCORE_STATE);
   const [showModal, setShowModal] = useState<Boolean>(false);
   const initialRender = useRef(true);
+  const [winningPattern, setWinningPattern] = useState<number[]>([]);
 
   useEffect(() => {
     if (initialRender.current) {
@@ -65,6 +66,7 @@ const Game = () => {
         }
       }
       if (matchingTiles >= 3) {
+        setWinningPattern(Constants.WINNING_PATTERNS[i]);
         return true;
       }
       matchingTiles = 0;
@@ -107,6 +109,7 @@ const Game = () => {
     setBoard(Constants.INITIAL_BOARD_STATE);
     setCurrentPlayer(Constants.INITIAL_CURRENT_PLAYER_STATE);
     setGameResult(Constants.INITIAL_GAME_RESULT_STATE);
+    setWinningPattern([]);
     setShowModal(false);
   };
 
@@ -136,16 +139,19 @@ const Game = () => {
               value={board[0]}
               gameEnded={gameResult.ended}
               onTileClick={() => handleTileClick(0)}
+              winningTile={winningPattern.includes(0)}
             />
             <Tile
               value={board[1]}
               gameEnded={gameResult.ended}
               onTileClick={() => handleTileClick(1)}
+              winningTile={winningPattern.includes(1)}
             />
             <Tile
               value={board[2]}
               gameEnded={gameResult.ended}
               onTileClick={() => handleTileClick(2)}
+              winningTile={winningPattern.includes(2)}
             />
           </TileRow>
           <TileRow>
@@ -153,16 +159,19 @@ const Game = () => {
               value={board[3]}
               gameEnded={gameResult.ended}
               onTileClick={() => handleTileClick(3)}
+              winningTile={winningPattern.includes(3)}
             />
             <Tile
               value={board[4]}
               gameEnded={gameResult.ended}
               onTileClick={() => handleTileClick(4)}
+              winningTile={winningPattern.includes(4)}
             />
             <Tile
               value={board[5]}
               gameEnded={gameResult.ended}
               onTileClick={() => handleTileClick(5)}
+              winningTile={winningPattern.includes(5)}
             />
           </TileRow>
           <TileRow>
@@ -170,16 +179,19 @@ const Game = () => {
               value={board[6]}
               gameEnded={gameResult.ended}
               onTileClick={() => handleTileClick(6)}
+              winningTile={winningPattern.includes(6)}
             />
             <Tile
               value={board[7]}
               gameEnded={gameResult.ended}
               onTileClick={() => handleTileClick(7)}
+              winningTile={winningPattern.includes(7)}
             />
             <Tile
               value={board[8]}
               gameEnded={gameResult.ended}
               onTileClick={() => handleTileClick(8)}
+              winningTile={winningPattern.includes(8)}
             />
           </TileRow>
         </div>
