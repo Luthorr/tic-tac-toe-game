@@ -16,7 +16,16 @@ export const WINNING_PATTERNS = [
 
 export const INITIAL_BOARD_STATE = ['', '', '', '', '', '', '', '', ''];
 export const INITIAL_CURRENT_PLAYER_STATE = CROSS;
-export const INITIAL_GAME_STATE = false;
+export const INITIAL_GAME_RESULT_STATE = {
+  winner: '',
+  ended: false,
+};
+
+export const INITIAL_SCORE_STATE = {
+  cross: 0,
+  draw: 0,
+  nought: 0,
+};
 
 export const COLOR_AQUA = 'aqua';
 export const COLOR_PRIMARY_LIGHTER = 'primary-lighter';

@@ -18,16 +18,11 @@ const Game = () => {
     Constants.INITIAL_CURRENT_PLAYER_STATE
   );
 
-  const [gameResult, setGameResult] = useState<GameResultType>({
-    winner: '',
-    ended: false,
-  });
+  const [gameResult, setGameResult] = useState<GameResultType>(
+    Constants.INITIAL_GAME_RESULT_STATE
+  );
 
-  const [score, setScore] = useState<ScoreType>({
-    cross: 0,
-    draw: 0,
-    nought: 0,
-  });
+  const [score, setScore] = useState<ScoreType>(Constants.INITIAL_SCORE_STATE);
 
   const initialRender = useRef(true);
 
@@ -36,18 +31,22 @@ const Game = () => {
       initialRender.current = false;
       return;
     }
+
     const isWinner = checkWin();
     if (isWinner) {
       incrementScore(currentPlayer);
       setGameResult({ winner: currentPlayer, ended: true });
       return;
     }
+
     const isDraw = checkDraw();
     if (isDraw) {
       incrementScore(Constants.DRAW);
       setGameResult({ winner: Constants.DRAW, ended: true });
+      return;
     }
-    changeCurrentPlayer();
+
+    isGameRunning() && changeCurrentPlayer();
   }, [board]);
 
   const incrementScore = (key: string) => {
@@ -91,14 +90,19 @@ const Game = () => {
     setBoard(board.map((item, ind) => (ind === tileId ? currentPlayer : item)));
   };
 
+  const isGameRunning = () => {
+    for (let i = 0; i < board.length; i++) {
+      if (board[i].length) {
+        return true;
+      }
+    }
+    return false;
+  };
+
   const resetGame = (): void => {
-    initialRender.current = true;
     setBoard(Constants.INITIAL_BOARD_STATE);
     setCurrentPlayer(Constants.INITIAL_CURRENT_PLAYER_STATE);
-    setGameResult({
-      winner: '',
-      ended: false,
-    });
+    setGameResult(Constants.INITIAL_GAME_RESULT_STATE);
   };
 
   return (
