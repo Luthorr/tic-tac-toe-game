@@ -15,6 +15,12 @@
   &:hover{
     background-color: $color__primary--lighter;
   }
+
+  @media (max-width: 576px){
+    min-width: 80px;
+    min-height: 80px;
+  }
+  
 }
 
 .winningTileCross {
