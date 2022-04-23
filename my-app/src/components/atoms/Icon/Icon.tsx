@@ -5,7 +5,7 @@ import classnames from 'classnames';
 import { motion } from 'framer-motion';
 import { CROSS, NOUGHT } from '../../../constants/Game.constants';
 
-const Icon = ({ name, size = 70, winningIcon }: IconTypes) => {
+const Icon = ({ name, size = 60, winningIcon }: IconTypes) => {
   if (name) {
     const icon = require(`../../../assets/icons/${name}.svg`);
     return (
@@ -15,6 +15,7 @@ const Icon = ({ name, size = 70, winningIcon }: IconTypes) => {
         src={icon}
         alt='icon'
         height={size}
+        width={size}
         className={classnames(styles.icon, {
           [styles.cross]: name === CROSS,
           [styles.nought]: name === NOUGHT,

@@ -3,6 +3,9 @@
 .headline {
   font-size: $typography__font-size--l;
   letter-spacing: 3px;
+  @media (max-width:568px) {
+    font-size: $typography__font-size--r;
+  }
 }
 
 .cross {
