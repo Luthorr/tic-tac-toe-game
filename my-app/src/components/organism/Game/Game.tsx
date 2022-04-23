@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useRef, useState } from 'react';
 import styles from './Game.module.scss';
 import Tile from '../../atoms/Tile/Tile';
@@ -74,13 +75,10 @@ const Game = () => {
     return false;
   };
 
-  const checkDraw = (): Boolean => {
-    let clickedTilesCounter = 0;
-    board.forEach(({ length }) => {
-      length && clickedTilesCounter++;
-    });
-    return clickedTilesCounter === 9 ? true : false;
-  };
+  const stringExist = (currValue: string) => currValue.length;
+
+  const checkDraw = (): Boolean => board.every(stringExist);
+  const isGameRunning = (): Boolean => board.some(stringExist);
 
   const changeCurrentPlayer = (): void => {
     setCurrentPlayer((prevMove) =>
@@ -90,15 +88,6 @@ const Game = () => {
 
   const handleTileClick = (tileId: number): void => {
     setBoard(board.map((item, ind) => (ind === tileId ? currentPlayer : item)));
-  };
-
-  const isGameRunning = () => {
-    for (let i = 0; i < board.length; i++) {
-      if (board[i].length) {
-        return true;
-      }
-    }
-    return false;
   };
 
   const changeShowModal = (): void => {
